@@ -1,7 +1,8 @@
 # syntax=docker/dockerfile:1
-ARG BASE_IMAGE_PREFIX
+#ARG BASE_IMAGE_PREFIX
 
-FROM ${BASE_IMAGE_PREFIX}alpine:3.13
+#FROM ${BASE_IMAGE_PREFIX}alpine:3.13
+FROM alpine:latest
 
 COPY scripts/start.sh /
 COPY guacamole-server /tmp/guacamole-server

@@ -8,12 +8,28 @@ on:
   workflow_dispatch:
 
 jobs:
-
+        
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Create folder
+      run: |
+        mkdir -p ./guacamole-server
+        ls ./guacamole-server
+    
+    - name: wget
+      uses: wei/wget@v1
+      with:
+        args: -qO- -P ./guacamole-server https://apache.org/dyn/closer.lua/guacamole/1.5.3/source/guacamole-server-1.5.3.tar.gz?action=download
+    
+    - name: Create folder
+      run: |
+        ls ./guacamole-server
+    
+    
+    #- name: Build the Docker image
+    #  run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)

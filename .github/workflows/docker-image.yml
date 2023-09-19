@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  GUACD_Version: 1.5.3
+  GUACD_Version: "1.5.3"
   DOCKER_IMAGE: redgate/flyway
   SCHEMAS: etslips
 

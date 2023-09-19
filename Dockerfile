@@ -20,6 +20,7 @@ ENV Common_BUILD_DEPS="curl autoconf automake gcc libtool cmake make fontconfig"
 ENV GUACD_BUILD_DEPS="cairo-dev ffmpeg-dev glib-dev libjpeg-turbo-dev libpng-dev libssh2-dev libvncserver-dev libwebp-dev libwebsockets-dev musl-dev pango-dev pulseaudio-dev libvorbis-dev freerdp-dev"
 ENV GUACD_BUILD_DEPS_TESTING="ossp-uuid-dev"
 
+ENV CFLAGS="-Wno-error"
 
 ###### Install & Download Prerequisites ######
 RUN apk -U --no-cache upgrade

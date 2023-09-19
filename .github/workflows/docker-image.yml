@@ -23,9 +23,9 @@ jobs:
     
     - name: Download guacamole-server
       run: |
-        mkdir -p ./guacamole-server
         wget -O guacamole-server-"${{ env.GUACD_Version }}".tar.gz https://apache.org/dyn/closer.lua/guacamole/"${{ env.GUACD_Version }}"/source/guacamole-server-"${{ env.GUACD_Version }}".tar.gz?action=download
-        tar -xz guacamole-server-"${{ env.GUACD_Version }}".tar.gz -C ./guacamole-server --strip-components=1
+        mkdir -p ./guacamole-server
+        tar -xzf guacamole-server-"${{ env.GUACD_Version }}".tar.gz -C ./guacamole-server --strip-components=1
     
     - name: ls
       run: ls ./guacamole-server

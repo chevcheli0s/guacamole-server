@@ -1,8 +1,8 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [ "master" ]
+#  push:
+#    branches: [ "master" ]
 #  pull_request:
 #    branches: [ "master" ]
   workflow_dispatch:
@@ -44,12 +44,15 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         
-    #- name: Build and push
-    #  uses: docker/build-push-action@v5
-     # with:
-      #  context: .
-       # platforms: linux/amd64,linux/arm/v7,linux/arm64
-       # push: true
-        #tags: |
-         #  ${{ github.repository }}:${{ env.GUACD_Version }}
-          # ${{ github.repository }}:latest
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm/v7,linux/arm64
+        build-args: |
+          GUACD_Version=${{ env.GUACD_Version }}
+          JFROG_PWD=${{ secrets.JFROG_CREDS_PSW }}
+        push: true
+        tags: |
+          ${{ github.repository }}:${{ env.GUACD_Version }}
+          ${{ github.repository }}:latest

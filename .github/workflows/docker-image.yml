@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  GUACD_Version: "1.5.3"
+  GUACD_Version: 1.5.3
   DOCKER_IMAGE: redgate/flyway
   SCHEMAS: etslips
 
@@ -27,7 +27,7 @@ jobs:
     - name: wget
       uses: wei/wget@v1
       with:
-        args: -O ./guacamole-server/guacamole-server-"${{ GUACD_Version }}".tar.gz https://apache.org/dyn/closer.lua/guacamole/"${{ GUACD_Version }}"/source/guacamole-server-"${{ GUACD_Version }}".tar.gz?action=download
+        args: -O ./guacamole-server/guacamole-server-"${{ env.GUACD_Version }}".tar.gz https://apache.org/dyn/closer.lua/guacamole/"${{ env.GUACD_Version }}"/source/guacamole-server-"${{ env.GUACD_Version }}".tar.gz?action=download
     
     - name: ls
       run: ls ./guacamole-server
